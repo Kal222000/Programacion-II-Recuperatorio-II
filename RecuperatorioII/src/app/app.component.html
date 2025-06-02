@@ -1,0 +1,63 @@
+@if (general == true) {
+  <div>
+  <h1>Gestor de Eventos</h1>
+  <button (click)="mostrar();mostrarC()">Crear Evento</button>
+  <button (click)="mostrar();mostrarEl()">Eliminar</button>
+  <button (click)="mostrar();mostrarL()">Listar Eventos</button>
+  <button>Editar Evento</button>
+</div>
+}
+
+@if (Listar == true) {
+  <button (click)="mostrar();mostrarL()">Atras</button>
+  @for (evento of Eventos; track $index) {
+    <h1>Evento {{$index + 1}}</h1>
+    <p>Nombre del Evento: {{evento.Nombre}}</p>
+    <p>Descripcion del Evento: {{evento.Nombre}}</p>
+    <p>Fecha del Evento: {{evento.Nombre}}</p>
+    <p>Tipo de Evento: {{evento.Nombre}}</p>
+    <p>Estado del Evento: {{evento.Nombre}}</p>
+    <br>
+    <br>
+    <br>
+  }
+  <br>
+}
+
+<div *ngIf="crear == true">
+  <button (click)="mostrar();mostrarC()">Atras</button>
+  <br>
+  <h1>Nombre del Evento</h1>
+  <input [(ngModel)] = 'Aux.Nombre'>
+  <h1>Descripcion del Evento</h1>
+  <input [(ngModel)] = 'Aux.Descripcion'>
+  <h1>Fecha del Evento</h1>
+  <input [(ngModel)] = 'Aux.Fecha'>
+  <h1>Tipo del Evento</h1>
+  <input [(ngModel)] = 'Aux.Tipo'>
+  <h1>Estado del Evento</h1>
+  <input [(ngModel)] = 'Aux.Estado'>
+  <br>
+  <br>
+  <button (click)="agregar_evento(Aux.Nombre, Aux.Descripcion, Aux.Fecha, Aux.Tipo, Aux.Estado)">Guardar Evento</button>
+</div>
+
+@if (Eliminar == true) {
+  <button (click)="mostrar();mostrarEl()">Atras</button>
+  <br>
+  <h1>Ingrese los datos para eliminar el evento</h1>
+  <input [(ngModel)] = 'Aux.Nombre'>
+  <h1>Fecha del Evento</h1>
+  <input [(ngModel)] = 'Aux.Fecha'>
+  <h1>Estado del Evento</h1>
+  <input [(ngModel)] = 'Aux.Estado'>
+  <br>
+  <br>
+  <button (click)="eliminar_evento(Aux.Nombre, Aux.Fecha, Aux.Estado)">Eliminar Evento</button>
+}
+
+<div *ngIf="Editar == true">
+  <button (click)="mostrar();mostrarE()">Atras</button>
+  <br>
+</div>
+<router-outlet />
